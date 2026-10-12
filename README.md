@@ -36,6 +36,9 @@ Commands sent while the bot was offline are ignored, so an old `!rh start` is ne
 
 ## Setup
 
+**For a detailed walkthrough with example configuration and troubleshooting, see [docs/setup.md](docs/setup.md).**
+The short version follows.
+
 You need Node.js 22.18 or newer, or Docker.
 
 ### 1. Create the bot account
@@ -63,8 +66,12 @@ Encryption cannot be disabled later, so if the room already exists encrypted, ma
 
 ### 3. Get the RespawnHost API key and server UUID
 
-In the RespawnHost dashboard, create an API key with the **`servers`** scope. The server UUID is
-in the panel URL of your server.
+In the RespawnHost dashboard, create an API key with only the **Game servers** scope. The dashboard does not
+show the server UUID; get it from the API (the `panelUuid` of your server):
+
+```bash
+curl -s -H "X-Api-Key: YOUR_API_KEY" https://respawnhost.com/api/v1/servers | jq
+```
 
 ### 4. Configure
 
@@ -84,7 +91,8 @@ npm run probe
 ```
 
 It prints the raw API responses plus what the bot reads from them (state, address). If the address comes
-out wrong or empty, set `SERVER_ADDRESS` in `.env`.
+out wrong or empty, set `SERVER_ADDRESS` in `.env`. The output includes the panel account's password
+(`panelUserPassword`), so don't share it unedited.
 
 ### 5. Run it
 
