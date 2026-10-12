@@ -1,0 +1,18 @@
+{
+  // Only used for `npm run typecheck`. Node runs the .ts files directly (type stripping),
+  // so the code must stick to erasable TypeScript syntax (no enums, no namespaces).
+  // "Bundler" resolution because the SDK's .d.ts files use extensionless relative imports.
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "include": ["src", "scripts", "test"]
+}

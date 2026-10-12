@@ -1,0 +1,24 @@
+{
+  "name": "respawnhost-matrix-bot",
+  "version": "1.0.0",
+  "description": "Matrix bot that lets allow-listed users start (and check on) one RespawnHost game server.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/main.ts",
+    "probe": "node --env-file-if-exists=.env scripts/probe.ts",
+    "test": "node --test",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@respawnhost/sdk": "1.2.0-BETA"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.9.3"
+  }
+}
